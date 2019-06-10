@@ -21,7 +21,7 @@ for line in raw:
         output.write(line)
         isUni = True
         continue
-    #"t     " is a string i appended in front of all the text in raw.txt to make life eaier for myself
+    #"t     " is a string I appended in front of all the text in raw.txt to make life eaier for myself
     if line[0:6] == "t     ":
         output.write(line[6:])
         continue
