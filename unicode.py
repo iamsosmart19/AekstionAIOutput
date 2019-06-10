@@ -14,10 +14,21 @@ output = open("output.txt", "w")
 raw = open("raw.txt", "r")
 lCharNum = 0
 isUni = True
+
+output.write("REFERENCE TABLE FOR VALUES\n")
+for index, c in enumerate(uniChars):
+    refStr = str(index) + ": " + uniChars[index] + ", "
+    if index < 10:
+        refStr = "0" + refStr
+    output.write(refStr)
+    if index % 15 == 0 and index > 0:
+        output.write("\n")
+output.write("\n\n")
+
 for line in raw:
     #regex expression for a "date"
     #may change later
-    if re.search("[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{1,2}", line):
+    if re.search("[1-3]{0,1}[0-9]\/[1]{0,1}[0-9]\/[0-9]{1,2}", line):
         output.write(line)
         isUni = True
         continue
