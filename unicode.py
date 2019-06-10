@@ -15,13 +15,17 @@ raw = open("raw.txt", "r")
 lCharNum = 0
 isUni = True
 for line in raw:
+    #regex expression for a "date"
+    #may change later
     if re.search("[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{1,2}", line):
         output.write(line)
         isUni = True
         continue
+    #"t     " is a string i appended in front of all the text in raw.txt to make life eaier for myself
     if line[0:6] == "t     ":
         output.write(line[6:])
         continue
+    #if it's a blank line, reset isUni to false
     if line == "\n":
         output.write(line)
         isUni = False
@@ -37,7 +41,10 @@ for line in raw:
             output.write(str(lCharNum))
             output.write(" ")
 
+#once colorise support is added, then this part will actually do something
+'''
 if os.name == "nt" or os.name == "Windows":
     os.system(os.getcwd() + "\/colorise") 
 else:
     os.system(os.getcwd() + "/colorise")
+'''
