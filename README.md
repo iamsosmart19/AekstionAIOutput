@@ -10,6 +10,6 @@ Anyway if you don't have any of those it's cool, data files are attached as raw.
 For the randoms who somehow found this, here's a link to the ARG:<br>
 - https://aekstionnahhruohten.wordpress.com/<br>
 <br>
-### Features to be Implemented:
+## Features to be Implemented:
 - Frequency analysis<br>
 - basic handwriting/type detection<br>
