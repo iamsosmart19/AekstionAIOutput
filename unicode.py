@@ -34,7 +34,7 @@ for line in raw:
         continue
     #"t     " is a string I appended in front of all the text in raw.txt to make life eaier for myself
     if line[0:6] == "t     ":
-        output.write(line[6:])
+        output.write(line)
         continue
     #if it's a blank line, reset isUni to false
     if line == "\n":

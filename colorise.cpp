@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 						  << "\u001b[38;5;0m" << " ";
 				*/
 			}
-			outfile << std::endl;
+			outfile << "\u001b[0m" << std::endl;
 			//std::cout << std::endl;
 		}
 	}
