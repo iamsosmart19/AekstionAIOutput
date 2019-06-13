@@ -1,6 +1,7 @@
 #!/bin/python3
 import re
 import os
+import collections
 
 #           1         2         3         4         5         6         7         8         9         10
 uniChars = ["\u0000", "\u0020", "\u002E", "\u002F", "\u0030", "\u0031", "\u0032", "\u0033", "\u0034", "\u0035",
@@ -25,6 +26,8 @@ for index, c in enumerate(uniChars):
         output.write("\n")
 output.write("\n\n")
 
+block = collections.Counter()
+
 for line in raw:
     #regex expression for a "date"
     #may change later
@@ -38,6 +41,8 @@ for line in raw:
         continue
     #if it's a blank line, reset isUni to false
     if line == "\n":
+        output.write("t     " + str(block) + "\n")
+        block.clear()
         output.write(line)
         isUni = False
         continue
@@ -50,6 +55,7 @@ for line in raw:
             if lCharNum < 10:
                 output.write("0")
             output.write(str(lCharNum) + " ")
+        block.update(line)
 
 if os.name == "nt" or os.name == "Windows":
     os.system(os.getcwd() + "\/colorise") 
