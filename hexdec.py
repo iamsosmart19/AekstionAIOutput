@@ -10,20 +10,10 @@ uniChars = ["\u0000", "\u0020", "\u002E", "\u002F", "\u0030", "\u0031", "\u0032"
             "\u0361", "\u0362", "\u039E", "\u2013", "\u2018", "\u2019", "\u201A", "\u201C", "\u2020", "\u2021",
             "\u2022", "\u2026", "\u2039", "\u203A", "\u2206", "\u221A", "\u221E", "\u2248", "\u25A2", "\u25A3",
             "\u25CA", "\u263C"]
-output = open("output.txt", "w")
+output = open("hexdec.txt", "w")
 raw = open("raw.txt", "r")
 lCharNum = 0
 isUni = True
-
-output.write("REFERENCE TABLE FOR VALUES\n")
-for index, c in enumerate(uniChars):
-    refStr = str(index) + ": " + uniChars[index] + ", "
-    if index < 10:
-        refStr = "0" + refStr
-    output.write(refStr)
-    if index % 15 == 0 and index > 0:
-        output.write("\n")
-output.write("\n\n")
 
 for line in raw:
     #regex expression for a "date"
@@ -46,12 +36,5 @@ for line in raw:
             if l == '\n':
                 output.write("\n")
                 break
-            lCharNum = uniChars.index(l)
-            if lCharNum < 10:
-                output.write("0")
-            output.write(str(lCharNum) + " ")
-
-if os.name == "nt" or os.name == "Windows":
-    os.system(os.getcwd() + "\/colorise") 
-else:
-    os.system(os.getcwd() + "/colorise")
+            lCharNum = ord(l)
+            output.write(str(lCharNum))
