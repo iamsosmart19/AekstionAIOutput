@@ -41,7 +41,20 @@ for line in raw:
         continue
     #if it's a blank line, reset isUni to false
     if line == "\n":
-        output.write("t     " + str(block) + "\n")
+        del block['\n']
+        nc = 0
+        blockstr = ""
+        for c in str(block):
+            if nc == 2:
+                blockstr += str(uniChars.index(c))
+                nc = 0
+                continue;
+            if c == ' ' or c == '{':
+                nc = 1
+            if c == "'" and nc:
+                nc = 2
+            blockstr += c
+        output.write("t     " + blockstr + "\n")
         block.clear()
         output.write(line)
         isUni = False
